@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🎉 Final Birthday Surprise 🎉</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        height: 100vh;
+        overflow: hidden;
+        background: radial-gradient(circle at top, #0f2027, #203a43, #2c5364);
+        color: white;
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 3.5rem;
+        margin-top: 40px;
+        opacity: 0;
+        animation: fadeIn 2s forwards;
+      }
+
+      h2 {
+        margin-top: 10px;
+        color: #ffcc70;
+        opacity: 0;
+        animation: fadeIn 2s forwards 1s;
+      }
+
+      h4 {
+        margin-top: 20px;
+        color: #ffffff;
+        opacity: 0;
+        animation: fadeIn 2s forwards;
+      }
+
+      #typing {
+        margin: 20px auto;
+        width: 85%;
+        max-width: 750px;
+        font-size: 1.3rem;
+        border-right: 3px solid white;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+
+      #finalMessage {
+        display: none;
+        margin-top: 25px;
+        font-size: 1.2rem;
+        line-height: 1.6;
+        max-width: 750px;
+        margin-left: auto;
+        margin-right: auto;
+        animation: fadeIn 2s ease-in-out;
+      }
+
+      button {
+        margin-top: 30px;
+        padding: 15px 30px;
+        font-size: 18px;
+        border: none;
+        border-radius: 40px;
+        /* Updated to pink gradient */
+        background: linear-gradient(45deg, #ff69b4, #ff1493);
+        color: white;
+        cursor: pointer;
+        transition: 0.4s;
+      }
+
+      button:hover {
+        transform: scale(1.15);
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+      }
+
+      .card {
+        margin-top: 30px;
+        padding: 25px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        display: inline-block;
+        animation: float 3s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-15px);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <h4>from 『MEER』حسیب</h4>
+    <h1>🎉 Happy Birthday IQRA 🎉</h1>
+    <h2>💖</h2>
+
+    <button onclick="startSurprise()">Click for Ultimate Surprise 🎁</button>
+
+    <div id="content" class="hidden">
+      <div class="card">
+        <div id="typing"></div>
+        <div id="finalMessage">
+          <p>💖 You are one of the most amazing people in this world.</p>
+          <p>✨ Your smile brings happiness to everyone around you.</p>
+          <p>
+            🎂 On this special day, I wish you unlimited success, love, and joy.
+          </p>
+          <p>
+            🌟 May all your dreams come true and your life be filled with
+            beautiful moments.
+          </p>
+          <p>💫 Never stop shining, because you truly deserve the best.</p>
+          <p>
+            🎉 Enjoy every second of your birthday — this day is all about YOU!
+          </p>
+          <h3 style="margin-top: 15px; color: #ffcc70">
+            💝 Once again, Happy Birthday! 💝
+          </h3>
+        </div>
+      </div>
+    </div>
+
+    <canvas id="confetti"></canvas>
+    <canvas id="fireworks"></canvas>
+
+    <audio id="music" loop>
+      <source
+        src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+        type="audio/mpeg"
+      />
+    </audio>
+
+    <script>
+      const introMessage = "A special surprise is waiting for you... 🎁";
+      let i = 0;
+
+      function typeEffect() {
+        if (i < introMessage.length) {
+          document.getElementById("typing").innerHTML += introMessage.charAt(i);
+          i++;
+          setTimeout(typeEffect, 40);
+        } else {
+          setTimeout(() => {
+            document.getElementById("finalMessage").style.display = "block";
+          }, 800);
+        }
+      }
+
+      function startSurprise() {
+        document.getElementById("content").classList.remove("hidden");
+        document.getElementById("music").play();
+        typeEffect();
+        startConfetti();
+        startFireworks();
+      }
+
+      // Confetti
+      const canvas = document.getElementById("confetti");
+      const ctx = canvas.getContext("2d");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      let pieces = [];
+      for (let i = 0; i < 120; i++) {
+        pieces.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          size: Math.random() * 8 + 2,
+          speed: Math.random() * 3 + 1,
+        });
+      }
+
+      function updateConfetti() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        pieces.forEach((p) => {
+          p.y += p.speed;
+          if (p.y > canvas.height) {
+            p.y = 0;
+            p.x = Math.random() * canvas.width;
+          }
+          ctx.fillStyle = `hsl(${Math.random() * 360}, 100%, 50%)`;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, 2 * Math.PI);
+          ctx.fill();
+        });
+        requestAnimationFrame(updateConfetti);
+      }
+
+      function startConfetti() {
+        updateConfetti();
+      }
+
+      // Fireworks
+      const fwCanvas = document.getElementById("fireworks");
+      const fwCtx = fwCanvas.getContext("2d");
+      fwCanvas.width = window.innerWidth;
+      fwCanvas.height = window.innerHeight;
+
+      let particles = [];
+
+      function createParticle(x, y) {
+        for (let i = 0; i < 50; i++) {
+          particles.push({
+            x: x,
+            y: y,
+            vx: (Math.random() - 0.5) * 10,
+            vy: (Math.random() - 0.5) * 10,
+            life: 100,
+            color: `hsl(${Math.random() * 360}, 100%, 50%)`,
+          });
+        }
+      }
+
+      function updateFireworks() {
+        fwCtx.clearRect(0, 0, fwCanvas.width, fwCanvas.height);
+        particles.forEach((p, index) => {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += 0.1; // gravity
+          p.life--;
+          if (p.life <= 0) {
+            particles.splice(index, 1);
+          } else {
+            fwCtx.fillStyle = p.color;
+            fwCtx.beginPath();
+            fwCtx.arc(p.x, p.y, 2, 0, 2 * Math.PI);
+            fwCtx.fill();
+          }
+        });
+        requestAnimationFrame(updateFireworks);
+      }
+
+      function startFireworks() {
+        setInterval(() => {
+          createParticle(
+            Math.random() * fwCanvas.width,
+            (Math.random() * fwCanvas.height) / 2
+          );
+        }, 1000);
+        updateFireworks();
+      }
+    </script>
+  </body>
+</html>
