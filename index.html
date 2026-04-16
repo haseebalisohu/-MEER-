@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>🎉 Birthday Surprise 🎉</title>
+    <title>🎉 Final Birthday Surprise 🎉</title>
 
     <style>
       * {
@@ -16,131 +16,115 @@
         font-family: "Poppins", sans-serif;
         height: 100vh;
         overflow: hidden;
+        background: radial-gradient(circle at top, #0f2027, #203a43, #2c5364);
         color: white;
         text-align: center;
-        position: relative;
-        /* Aesthetic and Classy Background */
-        background-color: #0d0d12;
-        background-image: 
-          radial-gradient(at 10% 10%, rgba(20, 20, 35, 0.8) 0px, transparent 50%),
-          radial-gradient(at 90% 10%, rgba(35, 35, 55, 0.7) 0px, transparent 50%),
-          radial-gradient(at 50% 90%, rgba(15, 15, 25, 0.9) 0px, transparent 50%),
-          radial-gradient(at 90% 90%, rgba(50, 45, 30, 0.4) 0px, transparent 50%),
-          linear-gradient(135deg, #0d0d12 0%, #1a1a2e 100%);
-        background-size: 200% 200%;
-        animation: aestheticGradient 15s ease infinite;
       }
 
-      /* Classy Moving Background Animation */
-      @keyframes aestheticGradient {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-      }
-
-      /* Pure glassmorphism card */
-      .card-container {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 90%;
-        max-width: 450px;
-        padding: 40px 20px;
-        background: rgba(255, 255, 255, 0.03);
-        border-radius: 25px;
-        backdrop-filter: blur(15px);
-        -webkit-backdrop-filter: blur(15px);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-        z-index: 10;
-        opacity: 0;
-        animation: cardFadeIn 1.5s ease forwards 0.5s;
-      }
-
-      @keyframes cardFadeIn {
-        to { opacity: 1; }
-      }
-
-      .from-text {
-        font-size: 1.1rem;
-        color: #d1d1d6; /* Classy off-white/gray */
-        margin-bottom: 5px;
-        font-weight: 300;
-      }
-
+      /* Desktop Settings */
       h1 {
-        font-size: 2.2rem;
-        color: white;
-        margin-bottom: 15px;
-        font-weight: 700;
-        letter-spacing: -1px;
-      }
-
-      h2 {
-        color: #ffcc70; /* Gold */
-        font-size: 3.2rem;
-        margin-bottom: 30px;
-        font-weight: 800;
-      }
-
-      button {
-        padding: 15px 35px;
-        font-size: 18px;
-        border: none;
-        border-radius: 50px;
-        background: linear-gradient(45deg, #f9d423, #ff4e50);
-        color: white;
-        font-weight: 600;
-        cursor: pointer;
-        transition: 0.3s ease;
-        box-shadow: 0 10px 20px rgba(255, 78, 80, 0.2);
-      }
-
-      button:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 15px 25px rgba(255, 78, 80, 0.3);
-      }
-
-      #content {
-        display: none;
-        margin-top: 30px;
+        font-size: 3.5rem;
+        margin-top: 40px;
         opacity: 0;
-        animation: fadeIn 1s ease forwards;
+        animation: fadeIn 2s forwards;
+        white-space: nowrap; 
+        padding: 0 10px;
+      }
+
+      /* Fixed Haseeb Name Style */
+      h2 {
+        margin-top: 10px;
+        color: #ffcc70;
+        font-size: 2rem;
+        opacity: 0;
+        animation: fadeIn 2s forwards 1s;
+      }
+
+      /* Mobile optimization */
+      @media (max-width: 600px) {
+        h1 {
+          font-size: 8vw; /* Scale perfectly on mobile */
+          margin-top: 60px;
+        }
+        h2 {
+          font-size: 1.5rem !important;
+        }
+        #typing {
+          font-size: 1rem !important;
+        }
+        #finalMessage {
+          font-size: 0.95rem !important;
+          width: 95% !important;
+        }
       }
 
       #typing {
-        font-size: 1rem;
-        color: #e0e0e0;
-        border-right: 2px solid white;
+        margin: 20px auto;
+        width: 85%;
+        max-width: 750px;
+        font-size: 1.3rem;
+        border-right: 3px solid white;
         white-space: nowrap;
         overflow: hidden;
-        display: inline-block;
-        margin-bottom: 20px;
       }
 
       #finalMessage {
-        font-size: 0.95rem;
-        color: #d1d1d6;
+        display: none;
+        margin-top: 25px;
+        font-size: 1.1rem;
         line-height: 1.6;
-        text-align: left;
-        max-width: 350px;
-        margin: 0 auto;
+        max-width: 750px;
+        margin-left: auto;
+        margin-right: auto;
+        animation: fadeIn 2s ease-in-out;
+        padding: 10px;
       }
 
-      #finalMessage p { margin-bottom: 10px; }
-      #finalMessage p:last-child { margin-bottom: 0; }
+      button {
+        margin-top: 30px;
+        padding: 15px 30px;
+        font-size: 18px;
+        border: none;
+        border-radius: 40px;
+        background: linear-gradient(45deg, #ff4e50, #f9d423);
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.4s;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      }
 
-      .hidden { display: none; }
+      button:hover {
+        transform: scale(1.1);
+      }
+
+      .hidden {
+        display: none;
+      }
 
       canvas {
         position: fixed;
         top: 0;
         left: 0;
-        width: 100%;
-        height: 100%;
         pointer-events: none;
-        z-index: 1;
+        z-index: 100;
+      }
+
+      .card {
+        margin-top: 30px;
+        padding: 20px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        display: inline-block;
+        animation: float 3s ease-in-out infinite;
+        width: 90%;
+        max-width: 500px;
+      }
+
+      @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
       }
 
       @keyframes fadeIn {
@@ -150,24 +134,23 @@
   </head>
 
   <body>
-    <div class="card-container">
-      <div class="from-text">from حسیب</div>
-      <h1>Happy Birthdayyy</h1>
-      <h2>💖اقراء💖</h2>
+    <h1>🎉 Happy Birthdayyy 🎉</h1>
+    <h2>from حسیب 💖</h2>
 
-      <button id="mainBtn" onclick="startSurprise()">click kro pgl 🎁</button>
+    <button id="btn" onclick="startSurprise()">click kro pgl 🎁</button>
 
-      <div id="content">
+    <div id="content" class="hidden">
+      <div class="card">
         <div id="typing"></div>
-        <div id="finalMessage" class="hidden">
+        <div id="finalMessage">
           <p>💖 You are one of the most amazing people in this world.</p>
           <p>✨ Your smile brings happiness to everyone around you.</p>
           <p>🎂 I wish you unlimited success, love, and joy.</p>
           <p>🌟 May all your dreams come true.</p>
           <p>💫 Never stop shining, you deserve the best.</p>
-          <p style="text-align: center; color: #ffcc70; font-weight: 600; margin-top: 15px;">
-            💝 Happy Birthday! 💝
-          </p>
+          <h3 style="margin-top: 15px; color: #ffcc70">
+            💝 Once again, Happy Birthday! 💝
+          </h3>
         </div>
       </div>
     </div>
@@ -183,53 +166,48 @@
       let i = 0;
 
       function typeEffect() {
-        const typingEl = document.getElementById("typing");
         if (i < introMessage.length) {
-          typingEl.innerHTML += introMessage.charAt(i);
+          document.getElementById("typing").innerHTML += introMessage.charAt(i);
           i++;
-          setTimeout(typeEffect, 60);
+          setTimeout(typeEffect, 50);
         } else {
-          typingEl.style.borderRight = "none";
           setTimeout(() => {
-            document.getElementById("finalMessage").classList.remove("hidden");
-          }, 800);
+            document.getElementById("finalMessage").style.display = "block";
+            document.getElementById("typing").style.borderRight = "none";
+          }, 500);
         }
       }
 
       function startSurprise() {
-        document.getElementById("mainBtn").style.display = "none";
-        document.getElementById("content").style.display = "block";
+        document.getElementById("btn").style.display = "none";
+        document.getElementById("content").classList.remove("hidden");
         document.getElementById("music").play();
         typeEffect();
         startConfetti();
       }
 
-      // Minimal Confetti Logic
       const canvas = document.getElementById("confetti");
       const ctx = canvas.getContext("2d");
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
 
       let pieces = [];
-      function createPieces() {
-        for (let i = 0; i < 60; i++) {
-          pieces.push({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height - canvas.height,
-            size: Math.random() * 5 + 2,
-            speed: Math.random() * 2 + 1.5,
-            color: `hsl(${Math.random() * 360}, 70%, 70%)`
-          });
-        }
+      for (let i = 0; i < 100; i++) {
+        pieces.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          size: Math.random() * 6 + 2,
+          speed: Math.random() * 3 + 1,
+          color: `hsl(${Math.random() * 360}, 80%, 60%)`
+        });
       }
 
       function startConfetti() {
-        createPieces();
         function update() {
           ctx.clearRect(0, 0, canvas.width, canvas.height);
           pieces.forEach((p) => {
             p.y += p.speed;
-            if (p.y > canvas.height) p.y = -10;
+            if (p.y > canvas.height) p.y = -20;
             ctx.fillStyle = p.color;
             ctx.fillRect(p.x, p.y, p.size, p.size);
           });
