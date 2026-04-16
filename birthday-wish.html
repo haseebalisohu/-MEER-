@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Wish</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 90%;
+        }
+        h1 {
+            color: #ff4757;
+            font-size: 24px;
+        }
+        a.button-link {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #2ed573;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin-top: 20px;
+        }
+        a.button-link:hover {
+            transform: scale(1.05);
+            background-color: #26af5f;
+        }
+        #wishes {
+            display: none;
+            margin-top: 25px;
+            padding: 15px;
+            background: #fffaf0;
+            border-right: 5px solid #ffa502;
+            text-align: right;
+            animation: fadeIn 0.5s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .wish-text {
+            color: #2f3542;
+            font-style: italic;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Happy Birthday from Haseeb! 🎂</h1>
+    <p>آپ کے لیے ایک خاص پیغام ہے۔</p>
+    
+    <a id="toggleWishes" href="#" class="button-link" role="button">Click for Wishes ✨</a>
+
+    <div id="wishes" aria-hidden="true">
+        <p class="wish-text">
+            "Wishing you a day filled with happiness and a year filled with joy. May all your dreams come true! Stay blessed always."
+        </p>
+        <p class="wish-text">
+            "اللہ آپ کو ہمیشہ خوش رکھے اور آپ کی زندگی کامیابیوں سے بھر دے۔ سالگرہ مبارک!"
+        </p>
+    </div>
+</div>
+
+<script>
+    const toggleLink = document.getElementById('toggleWishes');
+    const wishes = document.getElementById('wishes');
+
+    toggleLink.addEventListener('click', (event) => {
+        event.preventDefault();
+        const isHidden = wishes.style.display === 'none' || wishes.style.display === '';
+        wishes.style.display = isHidden ? 'block' : 'none';
+        wishes.setAttribute('aria-hidden', !isHidden);
+    });
+</script>
+
+</body>
+</html>
