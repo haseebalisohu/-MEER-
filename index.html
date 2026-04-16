@@ -16,136 +16,158 @@
         font-family: "Poppins", sans-serif;
         height: 100vh;
         overflow: hidden;
-        background: radial-gradient(circle at top, #0f2027, #203a43, #2c5364);
         color: white;
         text-align: center;
+        position: relative;
+        /* Aesthetic and Classy Background */
+        background-color: #0d0d12;
+        background-image: 
+          radial-gradient(at 10% 10%, rgba(20, 20, 35, 0.8) 0px, transparent 50%),
+          radial-gradient(at 90% 10%, rgba(35, 35, 55, 0.7) 0px, transparent 50%),
+          radial-gradient(at 50% 90%, rgba(15, 15, 25, 0.9) 0px, transparent 50%),
+          radial-gradient(at 90% 90%, rgba(50, 45, 30, 0.4) 0px, transparent 50%),
+          linear-gradient(135deg, #0d0d12 0%, #1a1a2e 100%);
+        background-size: 200% 200%;
+        animation: aestheticGradient 15s ease infinite;
       }
 
-      /* From Haseeb - Sub se upar aur IQRA wala color */
-      .from-text {
-        margin-top: 30px;
-        font-size: 1.2rem;
-        color: #ffcc70; 
+      /* Classy Moving Background Animation */
+      @keyframes aestheticGradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+
+      /* Pure glassmorphism card */
+      .card-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        max-width: 450px;
+        padding: 40px 20px;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 25px;
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        z-index: 10;
         opacity: 0;
-        animation: fadeIn 2s forwards 0.3s;
+        animation: cardFadeIn 1.5s ease forwards 0.5s;
+      }
+
+      @keyframes cardFadeIn {
+        to { opacity: 1; }
+      }
+
+      .from-text {
+        font-size: 1.1rem;
+        color: #d1d1d6; /* Classy off-white/gray */
+        margin-bottom: 5px;
+        font-weight: 300;
       }
 
       h1 {
-        font-size: 2rem; 
-        margin-top: 20px; /* 2 spaces gap from above text */
-        opacity: 0;
-        animation: fadeIn 2s forwards 0.8s;
-        padding: 0 10px;
-        white-space: nowrap;
+        font-size: 2.2rem;
+        color: white;
+        margin-bottom: 15px;
+        font-weight: 700;
+        letter-spacing: -1px;
       }
 
-      /* IQRA Name */
       h2 {
-        margin-top: 10px;
-        color: #ffcc70;
-        font-size: 2.8rem;
-        opacity: 0;
-        animation: fadeIn 2s forwards 1.4s;
-      }
-
-      #typing {
-        margin: 15px auto;
-        width: 85%;
-        max-width: 750px;
-        font-size: 1.1rem;
-        border-right: 3px solid white;
-        white-space: nowrap;
-        overflow: hidden;
-      }
-
-      #finalMessage {
-        display: none;
-        margin-top: 15px;
-        font-size: 0.95rem;
-        line-height: 1.4;
-        max-width: 90%;
-        margin-left: auto;
-        margin-right: auto;
-        animation: fadeIn 2s ease-in-out;
+        color: #ffcc70; /* Gold */
+        font-size: 3.2rem;
+        margin-bottom: 30px;
+        font-weight: 800;
       }
 
       button {
-        margin-top: 25px;
-        padding: 12px 25px;
+        padding: 15px 35px;
         font-size: 18px;
         border: none;
-        border-radius: 40px;
-        background: linear-gradient(45deg, #ff4e50, #f9d423);
+        border-radius: 50px;
+        background: linear-gradient(45deg, #f9d423, #ff4e50);
         color: white;
-        font-weight: bold;
+        font-weight: 600;
         cursor: pointer;
-        transition: 0.4s;
+        transition: 0.3s ease;
+        box-shadow: 0 10px 20px rgba(255, 78, 80, 0.2);
       }
 
       button:hover {
-        transform: scale(1.1);
+        transform: translateY(-3px);
+        box-shadow: 0 15px 25px rgba(255, 78, 80, 0.3);
       }
 
-      .hidden {
+      #content {
         display: none;
+        margin-top: 30px;
+        opacity: 0;
+        animation: fadeIn 1s ease forwards;
       }
+
+      #typing {
+        font-size: 1rem;
+        color: #e0e0e0;
+        border-right: 2px solid white;
+        white-space: nowrap;
+        overflow: hidden;
+        display: inline-block;
+        margin-bottom: 20px;
+      }
+
+      #finalMessage {
+        font-size: 0.95rem;
+        color: #d1d1d6;
+        line-height: 1.6;
+        text-align: left;
+        max-width: 350px;
+        margin: 0 auto;
+      }
+
+      #finalMessage p { margin-bottom: 10px; }
+      #finalMessage p:last-child { margin-bottom: 0; }
+
+      .hidden { display: none; }
 
       canvas {
         position: fixed;
         top: 0;
         left: 0;
+        width: 100%;
+        height: 100%;
         pointer-events: none;
-        z-index: -1;
-      }
-
-      .card {
-        margin-top: 15px;
-        padding: 15px;
-        width: 92%;
-        border-radius: 20px;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        display: inline-block;
-        animation: float 3s ease-in-out infinite;
-      }
-
-      @keyframes float {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-10px); }
+        z-index: 1;
       }
 
       @keyframes fadeIn {
         to { opacity: 1; }
       }
-
-      @media (max-width: 380px) {
-        h1 { font-size: 1.7rem; }
-        h2 { font-size: 2.3rem; }
-      }
     </style>
   </head>
 
   <body>
-    <div class="from-text">from حسیب 💖</div>
-    
-    <h1>🎉 Happy Birthdayyy 🎉</h1>
-    
-    <h2>اقراء</h2>
+    <div class="card-container">
+      <div class="from-text">from حسیب</div>
+      <h1>Happy Birthdayyy</h1>
+      <h2>💖اقراء💖</h2>
 
-    <button id="mainBtn" onclick="startSurprise()">click kro iqra 🎁</button>
+      <button id="mainBtn" onclick="startSurprise()">click kro pgl 🎁</button>
 
-    <div id="content" class="hidden">
-      <div class="card">
+      <div id="content">
         <div id="typing"></div>
-        <div id="finalMessage">
+        <div id="finalMessage" class="hidden">
           <p>💖 You are one of the most amazing people in this world.</p>
           <p>✨ Your smile brings happiness to everyone around you.</p>
           <p>🎂 I wish you unlimited success, love, and joy.</p>
           <p>🌟 May all your dreams come true.</p>
           <p>💫 Never stop shining, you deserve the best.</p>
-          <h3 style="margin-top: 10px; color: #ffcc70">
+          <p style="text-align: center; color: #ffcc70; font-weight: 600; margin-top: 15px;">
             💝 Happy Birthday! 💝
-          </h3>
+          </p>
         </div>
       </div>
     </div>
@@ -161,25 +183,28 @@
       let i = 0;
 
       function typeEffect() {
+        const typingEl = document.getElementById("typing");
         if (i < introMessage.length) {
-          document.getElementById("typing").innerHTML += introMessage.charAt(i);
+          typingEl.innerHTML += introMessage.charAt(i);
           i++;
-          setTimeout(typeEffect, 50);
+          setTimeout(typeEffect, 60);
         } else {
+          typingEl.style.borderRight = "none";
           setTimeout(() => {
-            document.getElementById("finalMessage").style.display = "block";
-          }, 500);
+            document.getElementById("finalMessage").classList.remove("hidden");
+          }, 800);
         }
       }
 
       function startSurprise() {
         document.getElementById("mainBtn").style.display = "none";
-        document.getElementById("content").classList.remove("hidden");
+        document.getElementById("content").style.display = "block";
         document.getElementById("music").play();
         typeEffect();
         startConfetti();
       }
 
+      // Minimal Confetti Logic
       const canvas = document.getElementById("confetti");
       const ctx = canvas.getContext("2d");
       canvas.width = window.innerWidth;
@@ -187,13 +212,13 @@
 
       let pieces = [];
       function createPieces() {
-        for (let i = 0; i < 100; i++) {
+        for (let i = 0; i < 60; i++) {
           pieces.push({
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height - canvas.height,
-            size: Math.random() * 7 + 2,
-            speed: Math.random() * 3 + 2,
-            color: `hsl(${Math.random() * 360}, 80%, 60%)`
+            size: Math.random() * 5 + 2,
+            speed: Math.random() * 2 + 1.5,
+            color: `hsl(${Math.random() * 360}, 70%, 70%)`
           });
         }
       }
