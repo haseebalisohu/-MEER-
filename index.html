@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>🎉 Final Birthday Surprise 🎉</title>
+    <title>🎉 Birthday Surprise 🎉</title>
 
     <style>
       * {
@@ -21,33 +21,33 @@
         text-align: center;
       }
 
-      /* Desktop Settings */
+      /* Main Heading in White */
       h1 {
-        font-size: 3.5rem;
-        margin-top: 40px;
+        font-size: 3rem;
+        margin-top: 60px;
         opacity: 0;
         animation: fadeIn 2s forwards;
         white-space: nowrap; 
         padding: 0 10px;
+        color: white; /* Pure white font */
       }
 
-      /* Fixed Haseeb Name Style */
+      /* From IQRA Style */
       h2 {
-        margin-top: 10px;
-        color: #ffcc70;
-        font-size: 2rem;
+        margin-top: 5px;
+        color: #ffcc70; /* Goldish tone for contrast */
+        font-size: 1.8rem;
         opacity: 0;
         animation: fadeIn 2s forwards 1s;
       }
 
-      /* Mobile optimization */
       @media (max-width: 600px) {
         h1 {
-          font-size: 8vw; /* Scale perfectly on mobile */
-          margin-top: 60px;
+          font-size: 8vw; 
+          margin-top: 80px;
         }
         h2 {
-          font-size: 1.5rem !important;
+          font-size: 6vw !important;
         }
         #typing {
           font-size: 1rem !important;
@@ -82,10 +82,10 @@
 
       button {
         margin-top: 30px;
-        padding: 15px 30px;
+        padding: 15px 35px;
         font-size: 18px;
         border: none;
-        border-radius: 40px;
+        border-radius: 50px;
         background: linear-gradient(45deg, #ff4e50, #f9d423);
         color: white;
         font-weight: bold;
@@ -113,13 +113,14 @@
       .card {
         margin-top: 30px;
         padding: 20px;
-        border-radius: 20px;
+        border-radius: 25px;
         background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
+        backdrop-filter: blur(15px);
         display: inline-block;
         animation: float 3s ease-in-out infinite;
         width: 90%;
         max-width: 500px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
       }
 
       @keyframes float {
@@ -135,9 +136,9 @@
 
   <body>
     <h1>🎉 Happy Birthdayyy 🎉</h1>
-    <h2>from حسیب 💖</h2>
+    <h2>from اقرا</h2>
 
-    <button id="btn" onclick="startSurprise()">click kro pgl 🎁</button>
+    <button id="btn" onclick="startSurprise()">yaha click kro 🎁</button>
 
     <div id="content" class="hidden">
       <div class="card">
